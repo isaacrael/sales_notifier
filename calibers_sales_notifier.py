@@ -1,5 +1,5 @@
 # Written By: Gil Rael
-# sales_notifier.py will notify Gil Rael via text message if item of interest
+# calibers_sales_notifier.py will notify Gil Rael via text message if item of interest
 # is found on Calibers' sales page
 
 # import required modules
