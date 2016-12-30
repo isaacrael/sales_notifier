@@ -1,5 +1,7 @@
+EasyProcess==0.2.3
 httplib2==0.9.2
 pytz==2016.10
+PyVirtualDisplay==0.2.1
 selenium==3.0.2
 six==1.10.0
 twilio==5.6.0
