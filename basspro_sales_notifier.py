@@ -24,7 +24,7 @@ def locate_sale_item():
 # note uncomment the next two lines if you are going to run this script from cron if you run this
 # script from the the command line python calibers_sales_notifier.py and the lines below are not commented
 # out you will not see the firefox web brower open
-#    display = Display(visible=0, size=(800, 600))
+#    display = Display(visible=0, size=(1200, 900))
 #    display.start()
 # open Firefox web browswer and maximize window
     driver = webdriver.Firefox("/usr/local/bin")
