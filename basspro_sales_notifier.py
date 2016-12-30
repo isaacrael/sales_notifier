@@ -27,7 +27,7 @@ def locate_sale_item():
 #    display = Display(visible=0, size=(800, 600))
 #    display.start()
 # open Firefox web browswer and maximize window
-    driver = webdriver.Firefox()
+    driver = webdriver.Firefox("/usr/local/bin")
     driver.maximize_window()
 # open basspro.com sales page
 # next five commented out lines are used to test a product that is on sale vs a product that is not on sale
