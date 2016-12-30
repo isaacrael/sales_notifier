@@ -10,6 +10,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 # so your script continues to run and exits normally
 from selenium.common.exceptions import NoSuchElementException
 from twilio.rest import TwilioRestClient
+# pyvirtualdisplay needs to be installed pip install pyvirtualdisplay in order to run this script from crontab
+# on Raspberry Pi, also xvfb needs to be installed sudo apt-get install xvfb
+from pyvirtualdisplay import Display
 
 
 # locate product of interest that is on sale at basspro.com and send
@@ -17,6 +20,12 @@ from twilio.rest import TwilioRestClient
 
 
 def locate_sale_item():
+# pyvirtualdisplay is needed in order to run this script from cron define display and start display
+# note uncomment the next two lines if you are going to run this script from cron if you run this
+# script from the the command line python calibers_sales_notifier.py and the lines below are not commented
+# out you will not see the firefox web brower open
+#    display = Display(visible=0, size=(800, 600))
+#    display.start()
 # open Firefox web browswer and maximize window
     driver = webdriver.Firefox()
     driver.maximize_window()
