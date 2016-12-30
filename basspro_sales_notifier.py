@@ -37,18 +37,23 @@ def locate_sale_item():
 #    driver.get("http://www.basspro.com/Remington-UMC-Handgun-Ammo-Mega-Pack/product/53416/")
     driver.get("http://www.basspro.com/Remington-UMC-Handgun-Ammo-Mega-Pack/product/53416/")
     driver.implicitly_wait(30)
-    try:
-        element = driver.find_element_by_class_name("sale")
-        if element.is_displayed():
-            client = TwilioRestClient("AC2c8bb5d4f471c5ccf25765e4f757b030", "5183d8a42f3d1a9084a4325029132058")
+    element = driver.find_element_by_class_name("sale")
+    if element.is_displayed():
+        client = TwilioRestClient("AC2c8bb5d4f471c5ccf25765e4f757b030", "5183d8a42f3d1a9084a4325029132058")
 # change the "from_" number to your Twilio number and the "to" number
 # to the phone number you signed up for Twilio with, or upgrade your
 # account to send SMS to any phone number
-            client.messages.create(to="+15058330785", from_="+15057966457",
+        client.messages.create(to="+15058330785", from_="+15057966457",
 
                        body="Hello from Pi!.....ON SALE TODAY! : ) Time To Buy Basspro Remington UMC 9mm Ammo"
                            "http://www.basspro.com/Remington-UMC-Handgun-Ammo-Mega-Pack/product/53416/")
-    except NoSuchElementException:
-        print("Item Not On Sale....")
+    else:
+        client = TwilioRestClient("AC2c8bb5d4f471c5ccf25765e4f757b030", "5183d8a42f3d1a9084a4325029132058")
+# change the "from_" number to your Twilio number and the "to" number
+# to the phone number you signed up for Twilio with, or upgrade your
+# account to send SMS to any phone number
+        client.messages.create(to="+15058330785", from_="+15057966457",
+
+                       body="Hello from Pi!.....NO SALE TODAY AT BASSPRO! : (")
     driver.quit()
 locate_sale_item();
