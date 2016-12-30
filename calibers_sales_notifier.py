@@ -20,7 +20,6 @@ from pyvirtualdisplay import Display
 # or send NO SALE TODAY text message if item of interest is not on sale
 
 def locate_sale_item():
-#    print os.environ["PATH"]
 # pyvirtualdisplay is needed in order to run this script from cron define display and start display
 # note uncomment the next two lines if you are going to run this script from cron if you run this
 # script from the the command line python calibers_sales_notifier.py and the lines below are not commented
