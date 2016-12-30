@@ -1,24 +1,33 @@
 # Written By: Gil Rael
-# calibers_sales_notifier.py will notify Gil Rael via text message if item of interest
+# sales_notifier.py will notify Gil Rael via text message if item of interest
 # is found on Calibers' sales page
 
 # import required modules
 
+import os
+import time
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 # this allows you to catch a thrown exception and add your own exception
 # so your script continues to run and exits normally
 from selenium.common.exceptions import NoSuchElementException
 from twilio.rest import TwilioRestClient
+# pyvirtualdisplay is needed in order to run this script from crontab
+from pyvirtualdisplay import Display
 
+"PATH" in os.environ
 
 # locate product of interest that is on sale at Calibers and send
 # ON SALE TODAY text message if item is on sale
 # or send NO SALE TODAY text message if item of interest is not on sale
 
 def locate_sale_item():
+    print os.environ["PATH"]
+# pyvirtualdisplay is needed in order to run this script from cron
+    display = Display(visible=0, size=(800, 600))
+    display.start()
 # open Firefox web browswer and maximize window
-    driver = webdriver.Firefox()
+    driver = webdriver.Firefox("/usr/local/bin")
     driver.maximize_window()
 # open Caliberusa.com sales page
     driver.get("https://www.calibersusa.com/all-products/browse/sale/yes/orderby/sort-by-sale/perpage/150")
@@ -33,7 +42,7 @@ def locate_sale_item():
 # account to send SMS to any phone number
             client.messages.create(to="+15058330785", from_="+15057966457",
 
-                       body="Hello from Pi!.....ON SALE TODAY! : ) Time To Buy Calibers One Year Dual Membership")
+                       body="($date)Hello from Pi!.....ON SALE TODAY! : ) Time To Buy Calibers One Year Dual Membership")
     except NoSuchElementException:
         client = TwilioRestClient("AC2c8bb5d4f471c5ccf25765e4f757b030", "5183d8a42f3d1a9084a4325029132058")
 # change the "from_" number to your Twilio number and the "to" number
@@ -41,6 +50,6 @@ def locate_sale_item():
 # account to send SMS to any phone number
         client.messages.create(to="+15058330785", from_="+15057966457",
 
-                    body="Hello from Pi!.....NO SALE TODAY : (  On Calibers One Year Dual Membership")
+                    body="Hello from Pi!..NO SALE TODAY          : (  On Calibers One Year Dual Membership")
     driver.quit()
 locate_sale_item();
